@@ -1,0 +1,65 @@
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: #333;
+    color: white;
+  }
+  
+  .navbar-brand {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding:1px;
+  }
+  
+  .hamburger {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .navbar-links a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .navbar-links a:hover {
+    background-color: #575757;
+  }
+  
+  .navbar-links.open {
+    display: flex;
+  }
+  
+  @media (min-width: 768px) {
+    .navbar {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .hamburger {
+      display: none;
+    }
+  
+    .navbar-links {
+      display: flex;
+      flex-direction: row;
+    }
+  
+    .navbar-links a {
+      padding: 15px;
+    }
+  }
+  
