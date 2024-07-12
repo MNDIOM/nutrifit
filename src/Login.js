@@ -1,58 +1,73 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
-import Navbar from './Navbar';
-
 
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [emailOrPhoneOrUsername, setEmailOrPhoneOrUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Replace with actual login logic (e.g., API call)
-    if (email === 'user@example.com' && password === 'password') {
+    const storedEmail = localStorage.getItem('email');
+    const storedPhone = localStorage.getItem('phone');
+    const storedUsername = localStorage.getItem('username');
+    const storedPassword = localStorage.getItem('password');
+
+    if (
+      (emailOrPhoneOrUsername === storedEmail ||
+        emailOrPhoneOrUsername === storedPhone ||
+        emailOrPhoneOrUsername === storedUsername) &&
+      password === storedPassword
+    ) {
       alert('Login successful!');
       navigate('/welcome');
     } else {
-      alert('Invalid email or password.');
+      alert('Invalid email, phone, username or password.');
     }
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
     <>
-    <Navbar/> {}
-   
-    <div className="login-form-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit} className="login-form">
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input 
-            type="email" 
-            id="email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            required 
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input 
-            type="password" 
-            id="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            required 
-          />
-        </div>
-        <div className="form-group">
-          <button type="submit" className="submit-btn">Login</button>
-        </div>
-      </form>
-    </div>
+     
+      <div className="login-form-container">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-group">
+            <label htmlFor="emailOrPhoneOrUsername">Email, Phone, or Username:</label>
+            <input
+              type="text"
+              id="emailOrPhoneOrUsername"
+              value={emailOrPhoneOrUsername}
+              onChange={(e) => setEmailOrPhoneOrUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input
+              type={showPassword ? 'text' : 'password'}
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="button" onClick={toggleShowPassword}>
+              {showPassword ? 'Hide' : 'Show'} Password
+            </button>
+          </div>
+          <div className="form-group">
+            <button type="submit" className="submit-btn">Login</button>
+          </div>
+        </form>
+      </div>
     </>
   );
 };

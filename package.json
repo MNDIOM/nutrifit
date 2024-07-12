@@ -18,6 +18,7 @@
     "build:react": "react-scripts --openssl-legacy-provider build",
     "build": "npm run build:tailwind && npm run build:react",
     "start": "cross-env GENERATE_SOURCEMAP=false react-scripts --openssl-legacy-provider start",
+    "dev": "cross-env PORT=3001 GENERATE_SOURCEMAP=false react-scripts --openssl-legacy-provider start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

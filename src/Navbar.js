@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+// import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const storedMenuState = localStorage.getItem('navbarMenuOpen');
@@ -21,10 +22,6 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate('/');
-  };
 
   const scrollToContent = () => {
     // Replace with the ID or class of the element you want to scroll to
@@ -40,7 +37,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <h2>NutriFit</h2>
+        <h2>Moe's Nutrifit</h2>
         <button className="hamburger" onClick={() => { toggleMenu(); scrollToContent(); }}>
           &#9776;
         </button>
@@ -50,8 +47,8 @@ const Navbar = () => {
           <>
             <Link to="/" onClick={toggleMenu}>Home</Link>
             <Link to="/signup" onClick={toggleMenu}>Sign Up</Link>
-            <Link to="/welcome" onClick={toggleMenu}>Welcome</Link>
-            <button className="logout" onClick={handleLogout}>Log Out</button>
+            <Link to="/Login" onClick={toggleMenu}>Login</Link>
+            
           </>
         )}
       </div>
