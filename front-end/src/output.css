@@ -1,3 +1,4 @@
+<<<<<<< HEAD:front-end/src/output.css
 /*
 ! tailwindcss v3.4.10 | MIT License | https://tailwindcss.com
 */
@@ -643,3 +644,8 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
+=======
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+>>>>>>> e006307eb3b07f8b9c976d83cdfcf4e9191fd324:dist/styles.css
