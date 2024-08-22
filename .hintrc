@@ -3,11 +3,11 @@
     "development"
   ],
   "hints": {
-    "compat-api/html": [
+    "compat-api/css": [
       "default",
       {
         "ignore": [
-          "meta[name=theme-color]"
+          "-webkit-text-size-adjust"
         ]
       }
     ]
